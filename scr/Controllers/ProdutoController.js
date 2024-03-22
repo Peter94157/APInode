@@ -7,7 +7,7 @@ module.exports = {
     async List(req, resp) {
         try {
             const produtos = await ModelProduto.findAll();
-            return resp.json(produtos)
+            return resp.json(produtos);
         } catch (error) {
             return console.error('Erros na List : ',error);
         }
@@ -28,7 +28,7 @@ module.exports = {
     
     async Update(req, resp) {
         try {
-            const prod = await ModelProduto.findByPK(req.body.Codigo);
+            const prod = await ModelProduto.findByPk(req.body.Codigo);
             if (prod){
                 prod.Descricao = req.body.Descricao;
                 await prod.save();
@@ -42,7 +42,7 @@ module.exports = {
 
     async GetOne(req, resp) {
         try {
-            const prod = await ModelProduto.findByPK(req.body.Codigo);
+            const prod = await ModelProduto.findByPk(req.body.Codigo);
 
             return resp.json(prod)
         } catch (error) {
