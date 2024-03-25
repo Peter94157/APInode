@@ -14,5 +14,8 @@
     "mssql": "^10.0.2",
     "sequelize": "^6.37.1",
     "tedious": "^18.1.0"
+  },
+  "scripts":{
+    "start": "node server.js"
   }
 }
