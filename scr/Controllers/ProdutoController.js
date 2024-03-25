@@ -16,8 +16,10 @@ module.exports = {
     async Create(req, resp) {
         try {
             const produtos = await ModelProduto.create({
-                Codigo: req.body.Codigo,
-                Descricao: req.body.Descricao
+                id: req.body.id,
+                barcode: req.body.barcode,
+                rota:req.body.rota,
+                romaneio:req.body.romaneio
             });
             
             return resp.json(produtos)
@@ -28,9 +30,11 @@ module.exports = {
     
     async Update(req, resp) {
         try {
-            const prod = await ModelProduto.findByPk(req.body.Codigo);
+            const prod = await ModelProduto.findByPk(req.body.id);
             if (prod){
-                prod.Descricao = req.body.Descricao;
+                prod.barcode = req.body.barcode;
+                prod.rota=req.body.rota;
+                prod.romaneio=req.body.romaneio;
                 await prod.save();
             }
 
@@ -42,7 +46,7 @@ module.exports = {
 
     async GetOne(req, resp) {
         try {
-            const prod = await ModelProduto.findByPk(req.body.Codigo);
+            const prod = await ModelProduto.findByPk(req.body.id);
 
             return resp.json(prod)
         } catch (error) {
@@ -52,7 +56,7 @@ module.exports = {
 
     async Delete(req, resp) {
         try {
-            const prod = await ModelProduto.findByPk(req.body.Codigo);
+            const prod = await ModelProduto.findByPk(req.body.id);
             await prod.destroy();
             return resp.json(prod)
         } catch (error) {

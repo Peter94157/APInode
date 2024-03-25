@@ -5,19 +5,28 @@ const shema ="";
 class Produto extends sequelize.Model{}
 
 Produto.init({
-    Codigo:{
+    id:{
         type:sequelize.INTEGER,
         autoIncrement:true,
         allowNull:false,
         primaryKey:true
     },
-    Descricao:
+    barcode:
     {
         type:sequelize.STRING,
-        allowNull:true
+        allowNull:false
+    },
+    rota:
+    {
+        type:sequelize.STRING,
+        allowNull:false
+    },
+    romaneio:{
+        type:sequelize.STRING,
+        allowNull:false
     }
 },{
-    sequelize: database, modelName: 'tbproduto',shema
+    sequelize: database, modelName: 'tabPiso',shema
     }
 )
 
